@@ -1,29 +1,29 @@
-Depatment,Lecture,Web,Seminar,Practicum,Lab,ADLN,Corporate Ed,GPS,Conference,All Types
-Air Force Aerospace Studies (AFROTC) Department,4.99,,,,,,,,,4.99
-Military Science (Army ROTC) Department,4.75,,,,,,,,,4.75
-Interactive Media and Game Development Program,4.40,4.70,,,4.80,,,,,4.63
-Humanities and Arts Department,4.48,4.50,4.63,4.69,,,,,,4.57
-Chemical Engineering Department,4.22,,,,4.33,,4.80,,,4.45
-Fire Protection Engineering Department,4.08,4.34,,,5.00,4.25,,,,4.42
-Interdisciplinary Programs,4.77,5.00,,,,3.95,3.93,,,4.41
-Materials Science and Engineering Program,4.34,,,,,4.44,,,,4.39
-Electrical and Computer Engineering Department,4.01,,,,4.24,4.25,4.80,,,4.33
-Biology and Biotechnology Department,4.25,,,,4.56,4.10,4.23,,,4.29
-Biomedical Engineering Department,4.28,4.20,,,4.10,4.55,,,,4.28
-Business School,4.19,4.33,,,,4.16,4.37,,,4.26
-Social Science and Policy Studies Department,4.21,,,,,,,,,4.21
-Civil Engineering Department,4.18,,,,4.43,3.94,,,,4.18
-Mathematical Sciences Department,4.10,3.90,,,,4.50,,,,4.17
-Aerospace Engineering Department,3.95,,,,4.30,,,,,4.13
-Engineering School,3.97,,,,4.28,,,,,4.12
-Neuroscience,4.10,,,,,,,,,4.10
-Chemistry and Biochemistry Department,4.09,4.00,,,4.28,4.10,4.00,,,4.09
-Physics Department,4.06,,,,4.16,,,,3.98,4.07
-Mechanical Engineering Department,4.02,4.25,,,3.76,3.92,4.25,,,4.04
-Data Science Program,4.29,,,,,3.78,,,,4.03
-Robotics Engineering Department,4.26,,,4.50,4.20,3.60,3.55,,,4.02
-Computer Science Department,4.20,4.10,,,3.81,3.94,,,,4.01
-Worcester Polytechnic Institute,3.80,,,,,,,,,3.80
-Bioinformatics and Computational Biology Program,4.20,,,,,3.70,3.40,,,3.77
-Undergraduate Studies Department,,3.30,,,,,,4.00,,3.65
-Integrative & Global Studies Department,3.88,2.80,,,,,,,,3.34
+,Lecture,Web,Seminar,Practicum,Lab,ADLN,Corporate Ed,GPS,Conference
+Humanities and Arts Department,4.48197424892704,4.5,4.628571428571428,4.685714285714286,,,,,
+Aerospace Engineering Department,3.9500000000000006,,,,4.300000000000001,,,,
+Civil Engineering Department,4.182926829268292,,,,4.428571428571428,3.9375,,,
+Air Force Aerospace Studies (AFROTC) Department,4.9896551724137925,,,,,,,,
+Biology and Biotechnology Department,4.252272727272728,,,,4.5600000000000005,4.1,4.233333333333333,,
+Bioinformatics and Computational Biology Program,4.2,,,,,3.7,3.4,,
+Biomedical Engineering Department,4.2846153846153845,4.2,,,4.1000000000000005,4.55,,,
+Electrical and Computer Engineering Department,4.011764705882352,,,,4.243478260869565,4.25,4.8,,
+Business School,4.1885714285714295,4.333333333333334,,,,4.16,4.371428571428572,,
+Chemistry and Biochemistry Department,4.093333333333333,4.0,,,4.276666666666667,4.1,4.0,,
+Chemical Engineering Department,4.21923076923077,,,,4.328571428571428,,4.8,,
+Computer Science Department,4.197333333333333,4.1,,,3.8117647058823527,3.9400000000000004,,,
+Mathematical Sciences Department,4.096183206106871,3.9000000000000004,,,,4.5,,,
+Robotics Engineering Department,4.260000000000001,,,4.5,4.2,3.6,3.55,,
+Data Science Program,4.288461538461539,,,,,3.7750000000000004,,,
+Social Science and Policy Studies Department,4.205263157894737,,,,,,,,
+Engineering School,3.9659090909090917,,,,4.279999999999999,,,,
+Fire Protection Engineering Department,4.08,4.340000000000001,,,5.0,4.25,,,
+Undergraduate Studies Department,,3.3,,,,,,4.0024999999999995,
+Integrative & Global Studies Department,3.8804347826086962,2.8,,,,,,,
+Interdisciplinary Programs,4.766666666666667,5.0,,,,3.9461538461538463,3.925,,
+Interactive Media and Game Development Program,4.4,4.7,,,4.8,,,,
+Worcester Polytechnic Institute,3.8,,,,,,,,
+Mechanical Engineering Department,4.016,4.25,,,3.7588235294117647,3.92,4.25,,
+Military Science (Army ROTC) Department,4.745454545454546,,,,,,,,
+Physics Department,4.061290322580645,,,,4.1571428571428575,,,,3.9842105263157896
+Materials Science and Engineering Program,4.341176470588236,,,,,4.4399999999999995,,,
+Neuroscience,4.1000000000000005,,,,,,,,

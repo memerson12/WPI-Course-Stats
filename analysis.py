@@ -1,7 +1,7 @@
 import json
 import csv
 
-file = open('ratings.json', 'r')
+file = open('ratings_with_subject.json', 'r')
 ratings: dict = json.load(file)
 file.close()
 
@@ -9,6 +9,7 @@ ratings_by_type = {}
 ratings_by_department_and_type = {}
 teacher_ratings = {}
 teacher_number_of_ratings = {}
+ratings_by_subject = {}
 
 departments = [*ratings]
 for department in departments:
@@ -24,10 +25,11 @@ for department in departments:
             total_ratings += float(course['overallRatings']['overallQuality']['average'])
             num_courses += 1
             instructor = course['courseInfo']['instructor']
+            subject = course['courseInfo']['subject']
+            course_rating = float(course['overallRatings']['overallQuality']['average'])
             teacher_number_of_ratings[instructor] = teacher_number_of_ratings.get(instructor, 1) + 1
-            teacher_ratings[instructor] = (teacher_ratings.get(instructor, float(
-                course['overallRatings']['overallQuality']['average'])) + float(
-                course['overallRatings']['overallQuality']['average'])) / 2
+            teacher_ratings[instructor] = (teacher_ratings.get(instructor, course_rating) + course_rating) / 2
+            ratings_by_subject[subject] = (ratings_by_subject.get(subject, course_rating) + course_rating) / 2
         average = total_ratings / num_courses
         ratings_by_type[course_type] = (ratings_by_type.get(course_type, average) + average) / 2
         ratings_by_department_and_type[department][course_type] = (ratings_by_department_and_type[department].get(
@@ -35,7 +37,7 @@ for department in departments:
         print(f'{course_type}s: {round(total_ratings / num_courses, 2)}/5 average rating')
     print('\n---------------------------\n')
 
-# print(teacher_ratings)
+print(ratings_by_subject)
 with open('./results/Ratings_by_Course_Type.csv', 'w') as csv_file:
     types_list = list(ratings_by_type.keys())
     writer = csv.DictWriter(csv_file, fieldnames=types_list)
@@ -60,6 +62,12 @@ with open('./results/Ratings_by_Department_and_Type.csv', 'w') as csv_file:
 with open('./results/Ratings_by_Professor.csv', 'w') as csv_file:
     writer = csv.writer(csv_file)
     writer.writerow(['Professor', 'Average Rating', 'Number of Courses'])
-    print([*teacher_ratings.items()])
     for key, value in teacher_ratings.items():
         writer.writerow([key, value, teacher_number_of_ratings[key]])
+
+with open('./results/Ratings_by_Subject.csv', 'w') as csv_file:
+    writer = csv.writer(csv_file)
+    writer.writerow(['Subject', 'Average Rating'])
+    for key, value in ratings_by_subject.items():
+        writer.writerow([key, value])
+

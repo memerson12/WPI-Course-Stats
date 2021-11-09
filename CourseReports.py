@@ -1,7 +1,7 @@
 import re
 import requests
 
-cookie = ''
+cookie = 'd016696c6ccf4ff2201d95b85a4a8a67'
 
 
 def getPastReports(course_id: str):
@@ -31,7 +31,8 @@ def extractReport(fields):
             "courseNumber": "",
             "numStudents": "",
             "courseType": "",
-            "term": ""
+            "term": "",
+            "subject": ""
         },
         "overallRatings": {
             "overallQuality": {

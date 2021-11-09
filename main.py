@@ -21,12 +21,13 @@ def main():
             report_info = Courses.getRating(report[3], report[0], report[5])
             department = course['Course_Section_Owner']
             course_type = report_info['courseInfo']['courseType']
+            report_info['courseInfo']['subject'] = course['Subject']
             if department not in ratings:
                 ratings[department] = {}
             if course_type not in ratings[department]:
                 ratings[department][course_type] = []
             ratings[department][course_type].append(report_info)
-    with open('ratings.json', 'w') as file:
+    with open('ratings_with_subject.json', 'w') as file:
         file.write(json.dumps(ratings, indent=2))
 
 
