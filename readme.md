@@ -2,7 +2,7 @@
 
 This is just a quick script I used to get some stats about the wpi professors.
 
-Main.py pulls current WPI course catalog and then pulls the course reports for all of those classes and sames it to a
+Main.py pulls current WPI course catalog and then pulls the course reports for all of those classes and saves it to a
 json file.
 
 Statistics.py loads the json file and does some simple statistics with it which are saved in the results folder as CSVs.
