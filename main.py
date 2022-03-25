@@ -18,7 +18,7 @@ def main():
         last_course_id = course_id
         reports = Courses.getPastReports(course_id)
         for report in reports:
-            report_info = Courses.getRating(report[3], report[0], report[5])
+            report_info = Courses.getRating(report)
             department = course['Course_Section_Owner']
             course_type = report_info['courseInfo']['courseType']
             report_info['courseInfo']['subject'] = course['Subject']
