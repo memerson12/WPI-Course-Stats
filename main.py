@@ -16,9 +16,9 @@ def main():
         if course_id == last_course_id: continue
         print(f'{current_course}/{total_courses}: {course["Course_Title"]}')
         last_course_id = course_id
-        reports = Courses.getPastReports(course_id)
+        reports = Courses.get_past_reports(course_id)
         for report in reports:
-            report_info = Courses.getRating(report)
+            report_info = Courses.get_rating(report)
             department = course['Course_Section_Owner']
             course_type = report_info['courseInfo']['courseType']
             report_info['courseInfo']['subject'] = course['Subject']

@@ -37,19 +37,20 @@ for department in departments:
         print(f'{course_type}s: {round(total_ratings / num_courses, 2)}/5 average rating')
     print('\n---------------------------\n')
 
-print(ratings_by_subject)
 with open('./results/Ratings_by_Course_Type.csv', 'w') as csv_file:
-    types_list = list(ratings_by_type.keys())
-    writer = csv.DictWriter(csv_file, fieldnames=types_list)
-    writer.writeheader()
-    writer.writerow(ratings_by_type)
+    writer = csv.writer(csv_file)
+    writer.writerow(['Course Type', 'Average Rating'])
+    for key, value in ratings_by_type.items():
+        writer.writerow([key, value])
 
 with open('./results/Ratings_by_Department.csv', 'w') as csv_file:
     departments_list = [*ratings_by_department_and_type]
     values_list = [sum(list(x.values())) / len(x.values()) for x in ratings_by_department_and_type.values()]
+    values_dict = dict(zip(departments_list, values_list))
     writer = csv.writer(csv_file)
-    writer.writerow(departments_list)
-    writer.writerow(values_list)
+    writer.writerow(['Department', 'Average Rating'])
+    for key, value in values_dict.items():
+        writer.writerow([key, value])
 
 with open('./results/Ratings_by_Department_and_Type.csv', 'w') as csv_file:
     writer = csv.writer(csv_file)
