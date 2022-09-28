@@ -2,3 +2,4 @@
 /venv/
 .idea
 /prod-data.json
+/.env

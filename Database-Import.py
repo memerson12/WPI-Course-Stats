@@ -11,7 +11,6 @@ mydb = mysql.connector.connect(
     host=os.getenv('PS_HOST'),
     user=os.getenv('PS_USERNAME'),
     password=os.getenv('PS_PASSWORD'),
-    # database="course-reports-data"
 )
 cursor = mydb.cursor()
 
@@ -24,15 +23,11 @@ def main():
             continue
         inserts = []
         year = report_name.split("_")[2].replace('.json', '')
-        if year != '2021-2022':
-            continue
         with open(f'./data/{report_name}', 'r') as file:
             reports = json.load(file)
             print(f'Creating Inserts for {year}')
             for report in reports:
                 if len(inserts) >= 1000:
-                    # print('/', '-'*100, '-/')
-                    # print(", ".join(inserts))
                     sql = f"""
                            INSERT INTO courses (course_title, course_number, course_type,
                                             instructor, response_count, subject, term,
@@ -46,15 +41,13 @@ def main():
                     print('\t\tDatabase Committed')
                     inserts = []
                 info = report['courseInfo']
-                # title = re.sub('[^a-zA-Z0-9& ]', '', info['courseTitle']).replace('  ', '').title().strip()
-                # title = re.sub('-', '', info['courseTitle']).replace('  ', '').title().strip()
                 title = parse_titles(info['courseTitle'])
-                # print(f'"{title}"')
                 course_number = info['courseNumber'].strip()
                 subject = course_number.split(' ')[0]
                 term = info['term'].split('_')[1]
                 if info['courseType'] not in ['Lecture', 'Web', 'Seminar', 'Practicum', 'Lab', 'ADLN', 'Corporate Ed',
                                               'GPS', 'Conference', 'Blended', 'Other']:
+                    print('Course Type not in Schema')
                     print(info)
                     exit()
                 course_rating = {"overallRatings": report['overallRatings'], "frequentlyTrue": report['frequentlyTrue'],
@@ -79,7 +72,6 @@ def main():
 
 
 def parse_titles(text: str):
-    # title = re.sub("'", '\'', text).replace('  ', '').title().strip()
     title = text.replace('  ', '').replace("'", "\\'").replace('"', '\\"').title().strip()
     title = fix_roman_numeral(title)
     return title
@@ -89,7 +81,6 @@ def fix_roman_numeral(text: str):
     possible_numerals = text.split(' ')
     search = re.search('(I{2,}|\bIV)', possible_numerals[-1], re.IGNORECASE)
     if search:
-        # print(possible_numerals[-1], 'of', f'"{text}"', 'was a numeral')
         return " ".join(possible_numerals[:-1]) + " " + possible_numerals[-1].upper()
     else:
         return " ".join(possible_numerals)
