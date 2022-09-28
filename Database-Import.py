@@ -27,7 +27,7 @@ def main():
             reports = json.load(file)
             print(f'Creating Inserts for {year}')
             for report in reports:
-                if len(inserts) >= 1000:
+                if len(inserts) >= 2000:
                     sql = f"""
                            INSERT INTO courses (course_title, course_number, course_type,
                                             instructor, response_count, subject, term,
