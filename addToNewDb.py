@@ -7,13 +7,14 @@ finalDict = json.load(f)
 
 f.close()
 
+
 overviewDict = []
 profDict = []
 for course in finalDict:
     if course['instructor'] not in profDict:
+        profDict.append(id, course['instructor'])
         # insert into profTable
         id = insertIntoProfTable(course['instructor'], course['ratings'])
-        profDict.append(course['instructor'])
     else:
         id = profDict.index(course['instructor'])
         # update profTable with new ratings

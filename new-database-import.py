@@ -36,7 +36,7 @@ for file in os.listdir("data"):
                     "subjectAbrev": course['courseInfo']['courseNumber'].split(' ')[0],
                     "subject": "",
                     "description": "",
-                    "format": "",
+                    "format": course['courseInfo']['courseType'],
                     "level": "",
                     "ratings": ratingsJSON,
                 }
@@ -44,7 +44,6 @@ for file in os.listdir("data"):
                     temp.update({
                         "subject": listings[num]['subject'],
                         "description": listings[num]['description'],
-                        "format": listings[num]['format'],
                         "level": listings[num]['academic_level'],
                         "title": listings[num]['name'],
                     })
