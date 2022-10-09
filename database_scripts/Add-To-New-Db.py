@@ -21,13 +21,17 @@ cursor = mydb.cursor()
 
 overviewDict = {}
 profDict = {}
+count = 0
+courseCount = 0
+total = len(finalDict)
 for course in finalDict:
-    print('Inserting', course['title'])
+    # print('\tInserting', course['title'])
     if course['instructor'] not in profDict:
-        names = course['instructor'].split(',')
+        names = course['instructor'].split(', ')
         statement = "INSERT professors (first_name, last_name) VALUES (%s, %s)"
         values = (names[1], names[0])
         cursor.execute(statement, values)
+        count += 1
         profDict[course['instructor']] = cursor.lastrowid
 
     if course['number'] not in overviewDict or 'HU 3900' == course['number'] or course['number'] == 'HU 3910':
@@ -38,10 +42,24 @@ for course in finalDict:
                   course['description'],
                   course['level'])
         cursor.execute(statement, values)
+        count += 1
         overviewDict[course['number']] = cursor.lastrowid
 
     statement = "INSERT courses (professor_id, overview_id, term, year, course_report_data) VALUES (%s, %s, %s , %s, %s)"
     values = (profDict[course['instructor']], overviewDict[course['number']], course['term'], course['year'],
               json.dumps(course['ratings']))
     cursor.execute(statement, values)
+    count += 1
+    courseCount += 1
+    if (count % 100 == 0):
+        mydb.commit()
+    # clear the console
+    print('\033c')
+    # make a progress bar using the courseCount and total and percent complete
+    print("Progress: ", courseCount, "/", total,
+          " = ", round(courseCount / total * 100, 2), "%")
+    print('[' + '#' * round(courseCount / total *
+                            100) + ' ' * (100 - round(courseCount / total * 100)) + ']')
+
 mydb.commit()
+print("Done")
