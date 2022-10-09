@@ -2,7 +2,6 @@
 import json
 import os
 
-
 f = open("output.json", "r")
 listings = json.load(f)
 f.close()
@@ -19,15 +18,15 @@ for file in os.listdir("data"):
                 title = course['courseInfo']['courseTitle']
                 # find a match in the listings
 
-                ratingsJSON = {}
+                ratingsJSON = {
+                    'overallRatings': course['overallRatings'],
+                    'relativeRating': course['relativeRating'],
+                    'frequentlyTrue': course['frequentlyTrue'],
+                    'misc': course['misc']}
                 # add overallRatings, relativeRating, frequentlyTrue, misc to ratingsJSON
-                ratingsJSON['overallRatings'] = course['overallRatings']
-                ratingsJSON['relativeRating'] = course['relativeRating']
-                ratingsJSON['frequentlyTrue'] = course['frequentlyTrue']
-                ratingsJSON['misc'] = course['misc']
 
                 # add oscar's data to the finalDict
-                temp = {
+                course_data = {
                     "title": title,
                     "term": course["courseInfo"]['term'].split('_')[1],
                     "number": num,
@@ -41,13 +40,12 @@ for file in os.listdir("data"):
                     "ratings": ratingsJSON,
                 }
                 if num in listings:
-                    temp.update({
+                    course_data.update({
                         "subject": listings[num]['subject'],
                         "description": listings[num]['description'],
                         "level": listings[num]['academic_level'],
                         "title": listings[num]['name'],
                     })
-                finalDict.append(temp)
-
+                finalDict.append(course_data)
 with open("final.json", "w") as f:
     json.dump(finalDict, f, indent=4)
