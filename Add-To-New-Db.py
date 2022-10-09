@@ -27,7 +27,7 @@ total = len(finalDict)
 for course in finalDict:
     # print('\tInserting', course['title'])
     if course['instructor'] not in profDict:
-        names = course['instructor'].split(',')
+        names = course['instructor'].split(', ')
         statement = "INSERT professors (first_name, last_name) VALUES (%s, %s)"
         values = (names[1], names[0])
         cursor.execute(statement, values)
@@ -57,6 +57,9 @@ for course in finalDict:
     print('\033c')
     # make a progress bar using the courseCount and total and percent complete
     print("Progress: ", courseCount, "/", total,
-          " = ", courseCount / total * 100, "%")
+          " = ", round(courseCount / total * 100, 2), "%")
     print('[' + '#' * round(courseCount / total *
                             100) + ' ' * (100 - round(courseCount / total * 100)) + ']')
+
+mydb.commit()
+print("Done")
