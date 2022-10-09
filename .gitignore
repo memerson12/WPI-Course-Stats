@@ -1,5 +1,5 @@
 # Project exclude paths
 /venv/
 .idea
-/prod-data.json
+/database_scripts/prod-data.json
 /.env

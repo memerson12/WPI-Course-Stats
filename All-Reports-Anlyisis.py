@@ -11,6 +11,8 @@ def main():
     report_files = os.listdir('./data')
     for report_name in report_files:
         with open(f'./data/{report_name}', 'r') as file:
+            if not file.name.endswith('.json'):
+                continue
             reports = json.load(file)
             for report in reports:
                 teacher = report['courseInfo']['instructor']
@@ -29,7 +31,8 @@ def main():
         writer = csv.writer(csv_file)
         writer.writerow(['Professor', 'Average Rating', 'Number of Courses', 'Total Number of Ratings'])
         for key, value in teacher_total_rating.items():
-            writer.writerow([key, value/teacher_number_classes[key], teacher_number_classes[key], teacher_number_ratings[key]])
+            writer.writerow(
+                [key, value / teacher_number_classes[key], teacher_number_classes[key], teacher_number_ratings[key]])
 
 
 if __name__ == '__main__':

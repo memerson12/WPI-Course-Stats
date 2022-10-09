@@ -7,7 +7,7 @@ listings = json.load(f)
 f.close()
 
 finalDict = []
-for file in os.listdir("data"):
+for file in os.listdir("../data"):
     if file.endswith(".json"):
         with open("data/" + file, "r") as f:
             data = json.load(f)

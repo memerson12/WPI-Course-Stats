@@ -16,7 +16,7 @@ cursor = mydb.cursor()
 
 
 def main():
-    report_files = sorted(os.listdir('./data'))
+    report_files = sorted(os.listdir('../data'))
     print(report_files)
     for report_name in report_files:
         if report_name == '.DS_Store':
